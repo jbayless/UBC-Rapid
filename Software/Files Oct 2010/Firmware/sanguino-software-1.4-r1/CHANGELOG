@@ -1,0 +1,29 @@
+***************** v1.4 ***************************
+
+- Replaced serial code with the Arduino serial code adapted to support two serial ports (kintel)
+- Draw a port mapping diagram for reference (kintel)
+- Minor changes to reduce the diff against Arduino-0012 (kintel)
+- Set eol-style to avoid Windows line endings (kintel)
+- Fixed Issue 2: Unified bootloaders (kintel)
+- Sync with Arduino-0013 - diff minification (kintel)
+
+***************** v1.3 ***************************
+
+- added missing Print* files for compatibility with LiquidCrystal library
+- updated Ethernet library for Sanguino compatibility
+- updated Servo library for Sanguino compatibility
+- updated Wire library for Sanguino compatibility
+
+***************** v1.2 ***************************
+
+- Just a quick bugfix release here. I fixed some bugs with the software that rendered it incompatible with Arduino 0012. Added some #ifdefs and brought in the new and - improved timer code.
+
+***************** v1.1 ***************************
+
+- added ADABoot bootloader mods from Brian Riley
+- fixed bootloader path in boards.txt
+- added missing Serial.flush() support
+
+***************** v1.0 ***************************
+
+Did the initial port to atmega644p

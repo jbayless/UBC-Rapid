@@ -1,0 +1,44 @@
+# Constants
+rin = 1.5/1000;
+t = 0.5/1000;
+rout = rin + t;
+R = 3/1000;
+mu0 = 1.25663706e-6;
+eps0 = 8.85418782e-12;
+c = 299792458;
+w = 5*10^5;
+k = w/c;
+
+# Metal properties: Copper
+sigma = 5.69e7;
+mur = 1;
+mu = mur*mu0;
+epsr = 1;
+eps = epsr*eps0;
+kappa = sqrt(i*w*mu*sigma + mu*eps*w^2);
+
+
+# Common Bessel Functions
+
+J0_krin = Bessel(0,'J',algorithm='maxima')(k*rin);
+J0_kapparin = Bessel(0,'J',algorithm='maxima')(kappa*rin);
+Y0_krin = Bessel(0,'Y',algorithm='maxima')(k*rin);
+# Y0_kapparin = Bessel(0,'Y',algorithm='maxima')(kappa*rin);
+# Y0_kapparin = 669.11538252263669572798580790199018784845990712724840073023024626349474346506768197146728468274851533134358427998+I*580.73388438561513644171961178419850505179248560842239712810485036383847023112103556417285096796699696654834549511;
+
+J1_krin = Bessel(1,'J',algorithm='maxima')(k*rin);
+J1_kapparin = Bessel(1,'J',algorithm='maxima')(kappa*rin);
+Y1_krin = Bessel(1,'Y',algorithm='maxima')(k*rin);
+# Y1(kapparin) = Bessel(1,'Y',algorithm='maxima')(kappa*rin);
+Y1_kapparin = 583.7755437538985548326947756044016305018575604979398686090+I*633.8356665638783668309130036199917121902355231323527417281;
+
+
+
+
+fake x: Bessel(0,'Y',algorithm='maxima')(x)
+plot(fake x,(x,0,10))
+
+
+
+
+
