@@ -1,7 +1,9 @@
 function [y, T_y, flow, P_in] = HeatTransferGT (dens_plastic,r_plastic,r_glass,L_glass,numpts,T_env,P_in,T_melt,flow)
 %function [T_y, flow, P_in] = HeatTransferGT (dens_plastic,r_plastic,r_glass,k_plastic,k_glass,L_glass,T_env,P_in,T_melt,flow)
+% UBC Rapid Induction Heater Project File
 %Calculates the temperature distribution in a glass extruder, using a one-dimensional model with heat conduction and plastic flow.
 %Assumes that PLA plastic is used
+%Glass transition included in the model
 %
 %T_y is the temperature as a function of the distance y from the heater plate (K)
 %flow is the volume flow rate in the extruder (m^3/s)
@@ -23,6 +25,8 @@ function [y, T_y, flow, P_in] = HeatTransferGT (dens_plastic,r_plastic,r_glass,L
 %
 %two of P_in, T_melt, or flow must be specified. The third will be calculated based on the other two.
 %
+% This file is currently still a draft
+% v0.0.1
 % Jacob Bayless, February 2011
 % UBC Rapid Team, RepRap Project
 % Licensed for use under the GPL (Gnu Public License)

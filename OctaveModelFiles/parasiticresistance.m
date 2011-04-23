@@ -1,7 +1,15 @@
 %function parasiticresistance
+% UBC Rapid Induction Heater Project File
+% Estimates the undesired change in resistance of the primary coil due to secondary heating effects
+% Currently this file is still a draft
+%
+% v 0.0.0
+% Jacob Bayless, February 2011
+% UBC Rapid Team, RepRap Project
+% Licensed for use under the GPL (Gnu Public License)
 
-R = 3/1000;
-Lp = 10/1000;
+%R = 3/1000;
+%Lp = 10/1000;
 D = 2*R;
 layers = 2;
 d = Lp*layers/N

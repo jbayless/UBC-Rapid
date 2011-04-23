@@ -1,6 +1,14 @@
 %function maxwellbridge(Vs,reflect_resistance,inductance,T,freqrange,freqnumber)
 %function maxwellbridge(Vs,reflect_resistance,inductance,T,freqrange,freqnumber)
+% UBC Rapid Induction Heater Project File
 %"resistance" should be reflected resistance (reflect_resistance), not ring resistance (resistance).
+%
+%
+%
+% v 1.0.7
+% Jacob Bayless, February 2011
+% UBC Rapid Team, RepRap Project
+% Licensed for use under the GPL (Gnu Public License)
 
 Vs=2.5;
 

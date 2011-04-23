@@ -1,6 +1,7 @@
 function [R0, L0, betaR, betaL] = calculatebetas (T,T0,resistance,inductance)
 %function [R0, L0, betaR, betaL] = calculatebetas (T,T0,resistance,inductance)
-
+% UBC Rapid Induction Heater Project File
+%
 % what are betas?
 %if resistance and inductance don't change much over the range of temperatures, then we can represent them by a linear function
 %beta is the slope
@@ -10,6 +11,12 @@ function [R0, L0, betaR, betaL] = calculatebetas (T,T0,resistance,inductance)
 % Another way is to calculate the average slope of the entire function by dividing the range by the domain
 % Which method is the best approximation depends on which temperature is chosen to be T0
 %Note, this method assumes a linspaced T.
+%
+%
+% v 1.0.1
+% Jacob Bayless, February 2011
+% UBC Rapid Team, RepRap Project
+% Licensed for use under the GPL (Gnu Public License)
 
 T0_index = find(T == T0);
 T0_indp = T0_index+1;

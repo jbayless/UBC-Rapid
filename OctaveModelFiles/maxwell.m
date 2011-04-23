@@ -1,5 +1,42 @@
-function [reflect_resistance,resistance,current,I2R,inductance,vac_primary,s,E,B] = maxwell(I0,N,Ls,rin,rout,R,freq,sigma,numxvals)
+function [reflect_resistance,resistance,current,I2R,inductance,vac_primary,s,E,B] = maxwell(I0,N,Lp,Ls,rin,rout,R,freq,sigma,numxvals)
 %function [reflect_resistance,resistance,current,I2R,inductance,vac_primary,vac_primary2,s,E,B] = maxwell(I0,N,Ls,rin,rout,R,freq,sigma,numxvals)
+% UBC Rapid Induction Heater Project File
+% This function solves the electric and magnetic field distributions in the ring extruder, and finds the effective resistance, inductance, current distribution, etc.
+% Assumes a semi-infinite cylindrically-symmetric system
+% For mathematical details, see ExactMaxwell3.docx
+%
+%
+% Inputs:
+%
+% I0 - The peak amplitude of the driving current in the primary coil. I(t) = I0*sin(2*pi*freq*t)
+% N - Number of windings in the primary coil
+% Lp - Length of the primary coil, in metres. Typical value: 10/1000 (1 cm)
+% Ls - Length of the secondary "coil" (actually just a metal ring, so it's the height of the ring), in metres. Typical value: 2/1000 (2 mm)
+% rin - Inner radius of the secondary coil (ring inner radius). Typical value: 1/1000 (1 mm)
+% rout - Outer radius of the secondary coil (ring outer radius). Typical value: 1.5/1000 (1.5 mm, for a 3 mm diameter ring)
+% R - radius of primary coil (outer radius of glass tube). Typical value: 3/1000 (3 mm, for a 6 mm diameter tube)
+% freq -  frequency of the driving current in the primary coil.  I(t) = I0*sin(2*pi*freq*t)
+% sigma - Conductivity of the metal ring in Siemens per metre. Should be a single number. Typical value: 5.69e7 (Copper at room temperature)
+% numxvals - Fineness of length scale of output. Each of the four spatial regions are discretized into this many points, so the output data has 4*numxvals entries.
+%
+% Outputs:
+% 
+% reflect_resistance - The power-dissipation equivalent resistance of the ring as a load on the primary coil (Ohms)
+% resistance - The power-dissipation equivalent resistance seen by the current in the secondary ring (Ohms)
+% current - The total current circulating in the secondary (Amps)
+% I2R - The power dissipated in the secondary ring (Watts)
+% inductance - the inductance of the system as it appears to the primary coil (Henries)
+% vac_primary - the voltage phasor on the primary coil (Volts)
+% s - the array of spatial coordinates used in the calculation (in metres)
+% E - the circumferential electric field phasor at the points 's' (Volts/metre)
+% B - the axial magnetic flux density phasor at the points 's' (Tesla)
+%
+% 
+% v 1.0.12
+% Jacob Bayless, April 2011
+% UBC Rapid Team, RepRap Project
+% Licensed for use under the GPL (Gnu Public License)
+
 
 %define error output values
 resistance = -1;
@@ -16,7 +53,7 @@ B = -1;
 
 t = rout-rin;
 %rout = rin + t;
-Lp = 1/1000; %used to be 10
+%Lp = 1/1000; %used to be 10
 %Ls = 3/1000;
 
 din = 2*rin;
